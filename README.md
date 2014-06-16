@@ -140,11 +140,11 @@ Con esto ya tenemos al primer usuario de la base para poder consultarlo.
 
 Descargamos el archivo postgresql-9.3-1100-jdbc41.jar y validadorCAS.jar y los agregamos en la siguiente ruta dentro de la carpeta del CAS Server:
 		
-		C:\ <Directorio de Tomcat Server>\webapps\cas\WEB-INF\lib
+		C:\<Directorio de Tomcat Server>\webapps\cas\WEB-INF\lib
 		
 Una vez realizado esto dentro de la carpeta WEB-INF, abrimos el archivo deployerConfigContext.xml y comentamos la siguiente línea:
 		
-		<bean 				class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
+		<bean class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
 		
 Debajo de la línea que acabamos de comentar, colocamos la siguiente:
 		
