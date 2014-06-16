@@ -104,7 +104,7 @@ Una vez levantado el servidor, entramos a la siguiente URL haciendo uso del puer
 
 5.	Despliegue de CAS Server
 
-Descargamos el archivo ZIP de la versión CAS Server 3.5.2.1, luego se descomprime el archivo y buscamos la carpeta modules. Dentro de esta carpeta se encuentra un archivo llamado cas-server-webapp-3.5.2.1.war, hacemos una copia del mismo y la renombramos con el nombre cas.war.
+Descargamos el archivo ZIP de la versión CAS Server 3.5.2.1, luego se descomprime el archivo y buscamos la carpeta modules. Dentro de esta carpeta se encuentra un archivo llamado cas-server-webapp-3.5.2.1.war (http://www.jasig.org/cas_server_3_5_2_1_release), hacemos una copia del mismo y la renombramos con el nombre cas.war.
 
 Entramos a la página principal del servidor Apache Tomcat, luego nos damos clic sobre Manager App. Una vez dentro, en la sección  Archivo WAR a desplegar presionamos sobre el botón Seleccionar archivo, buscamos y seleccionamos el archivo cas.war y damos click en abrir.
 
