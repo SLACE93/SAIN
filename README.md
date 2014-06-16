@@ -43,18 +43,18 @@ Abrimos una ventana de comandos (cmd.exe) y nos ubicamos en el siguiente directo
 		Is CN=compA, OU=Information Systems, O=Pacific Disaster Center, L=Kihei, ST=HI, C=US correct?
 		  [no]:  yes
 		
-		Nota: Cabe recalcar que el dato que se coloque como nombre y apellido, será el nombre del dominio que más adelante utilizaremos para usar la conexión segura HTTPS. 
+Nota: Cabe recalcar que el dato que se coloque como nombre y apellido, será el nombre del dominio que más adelante utilizaremos para usar la conexión segura HTTPS. 
 		
 		
-		Ahora hacemos exportamos el certificado generado del almacén de clave.
+Ahora hacemos exportamos el certificado generado del almacén de clave.
 		
 		keytool -export -alias tomcat -keypass changeit -file server.crt
 		
-		Finalmente, agregamos el certificado al archivo cacerts del JDK.
+Finalmente, agregamos el certificado al archivo cacerts del JDK.
 		
 		keytool -import -file server.crt -keypass changeit -keystore ..\jre\lib\security\cacerts
 		
-		Respondemos: si y cerramos la ventana de comandos.
+Respondemos: si y cerramos la ventana de comandos.
 
 
 2.	Modificar el archivo host de Windows
