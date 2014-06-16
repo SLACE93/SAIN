@@ -100,8 +100,7 @@ Para más información, puede consultar en: https://wiki.jasig.org/display/CASUM
 
 4.	Verificar de la conexión HTTPS
 
-Una vez levantado el servidor, entramos a la siguiente URL haciendo uso del puerto para conexión segura:
-																		https://grupof:8443/
+Una vez levantado el servidor, entramos a la siguiente URL haciendo uso del puerto para conexión segura: https://grupof:8443/
 
 5.	Despliegue de CAS Server
 
