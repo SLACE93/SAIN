@@ -130,7 +130,7 @@ Una vez ya creada nuestra base de datos, damos clic derecho sobre ella y escogem
 		
 Añadimos el siguiente script y lo ejecutamos:
 		
-		CREATE TABLE usuarios (id integer primary key, nombre varchar(30),pass varchar(30) );
+		CREATE TABLE usuarios (id integer primary key, usuario varchar(30),password varchar(30) );
 		INSERT INTO usuarios  VALUES (1,'victor','123456');
 		
 Con esto ya tenemos al primer usuario de la base para poder consultarlo.
