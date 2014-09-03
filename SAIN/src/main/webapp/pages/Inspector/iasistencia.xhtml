@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Asistencia</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <link rel="shortcut icon" href="images/logo.png"/>
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+            body{background-color: white;}
+            
+            header{
+                width: 100%;
+                height: 13%;
+                background-color: #1c94c4;
+                color: white;
+            }
+            nav{
+                height: 100%;
+                width: 15%;
+                background-color: #eee;
+                float: left;
+            }
+            article{
+                width: 75%;
+                height: 100%;
+                float: left;
+            }
+            footer {
+                background: #363636;
+                width: 100%;
+                color: white;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+            }
+                footer h3 {
+                    font-size: 0.8em;
+                }
+
+            #title {
+                font-size: 1.5em;
+                width: 50%;
+                display: inline-block;
+            }
+            #info{
+                width: 48%;
+                font-size: 0.9em;
+                display: inline-block;
+                text-align: right;
+                text-decoration: none;
+                color: white;
+            }
+            #tinfo{
+                color:white;
+            }
+            #tinfo:hover{
+                text-decoration:underline;
+            }
+            #cartilla{
+                margin: 25px 25px 25px 25px;
+                font-size: 1.2em;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <div id="title">
+                <h2>Bienvenido a SAIN</h2>
+            </div>
+            <div id="info">
+                <h:outputLabel  value="#{request.remoteUser}"/>
+                <p:link id="tinfo" href="https://grupof:8443/cas/logout" value=",Cerrar Sesion"/>
+            </div>
+        </header>
+        <nav>
+            <h:form>
+                <p:growl autoUpdate="true"/>
+                <p:panelMenu style="width: max-content">
+                    <p:submenu label="Inicio" >
+                        <p:menuitem value="Perfil" action="index.xhtml" icon="ui-icon-home" />
+                    </p:submenu>
+                    <p:separator />
+                    <p:submenu label="Asistencia" >
+                        <p:menuitem value="Registrar" action="iasistencia.xhtml" icon="ui-icon-document" />
+                    </p:submenu>
+                    <p:submenu label="Conducta" >
+                        <p:menuitem value="Subir Informe" action="rconducta.xhtml" icon="ui-icon-document" />
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>
+        </nav>
+        <article>
+            <section>
+                <h:form id="selectcurso">
+                    <p:growl id="msgs" showDetail="true" life="2500" />
+                    <p:panel header="Seleccione el Curso" style="margin-bottom:10px;">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="curso" value="Curso: " />
+                            <p:selectOneMenu id="curso" value="#{inspectorBean.curso}" converter="icursoConverter" style="width:150px">
+                                <f:selectItems value="#{inspectorBean.cursos}" var="curso" itemLabel="#{curso}" itemValue="#{curso}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel for="fecha" value="fecha:" />
+                            <p:calendar id="fecha" value="#{inspectorBean.date}" effect="fold" />
+                        </h:panelGrid>
+                        <p:separator />
+                        <p:commandButton value="Consultar" actionListener="#{inspectorBean.cargarAction}" update="table-wrapper, msgs" icon="ui-icon-check" />
+                        
+                        <p:panel id="table-wrapper" style="margin-top:30px;">
+                            <p:dataTable rendered="#{inspectorBean.visible}" var="estudiante" value="#{inspectorBean.estudiantes}" rowKey="#{estudiante.id}" 
+                                         paginator="true" rows="12" selection="#{inspectorBean.estudiantesAsistentes}">  
+                                <f:facet name="header">  
+                                    Asistencia
+                                </f:facet>  
+
+                                <p:column headerText="Apellidos">  
+                                    <h:outputText value="#{estudiante.apellido}" />  
+                                </p:column>  
+
+                                <p:column headerText="Nombre">  
+                                    <h:outputText value="#{estudiante.nombre}" />  
+                                </p:column>
+
+                                <p:column headerText="Asistio" selectionMode="multiple" />
+
+                                <f:facet name="footer"> 
+                                    <p:commandButton image="ui-icon ui-icon-circle-plus" value="Registrar la Asistencia" actionListener="#{inspectorBean.registrarAsistencia()}" update=":selectcurso:msgs, :selectcurso:table-wrapper">
+                                        <p:confirm header="Confirmación" message="Desea registrar las asistencias" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                    
+                                    <p:commandButton image="ui-icon ui-icon-circle-minus" value="Cancelar" actionListener="#{inspectorBean.cancelarAsistencia()}" update=":selectcurso:table-wrapper">
+                                        <p:confirm header="Confirmación" message="Desea cancelar" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </f:facet> 
+                            </p:dataTable> 
+                        </p:panel>
+                    </p:panel>
+                </h:form>
+            </section>
+        </article>
+        <footer>
+            <h3>SAIN. Sistema Academico Institucional&copy;</h3>
+        </footer>
+
+    </h:body>
+</html>
+

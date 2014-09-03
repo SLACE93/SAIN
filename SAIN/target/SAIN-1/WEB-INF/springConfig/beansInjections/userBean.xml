@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+     
+        <!-- ********DAO*********** -->
+        <bean id="estudianteDao" class="com.sain.dao.impl.EstudianteDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        <bean id="empleadoDao" class="com.sain.dao.impl.EmpleadoDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        <bean id="cursoDao" class="com.sain.dao.impl.CursoDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        <bean id="asistenciaDao" class="com.sain.dao.impl.AsistenciaDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        <bean id="matriculaDao" class="com.sain.dao.impl.MatriculaDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        <bean id="materiaDao" class="com.sain.dao.impl.MateriaDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        <bean id="quimestreDao" class="com.sain.dao.impl.QuimestreDaoImpl" >
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <!-- ******BO**********-->
+        <bean id="estudianteBo" class="com.sain.bo.impl.EstudianteBoImpl">
+            <property name="estudianteDao" ref="estudianteDao" />
+        </bean>
+        <bean id="empleadoBo" class="com.sain.bo.impl.EmpleadoBoImpl">
+            <property name="empleadoDao" ref="empleadoDao" />
+        </bean>
+        <bean id="cursoBo" class="com.sain.bo.impl.CursoBoImpl">
+            <property name="cursoDao" ref="cursoDao" />
+        </bean>
+        <bean id="asistenciaBo" class="com.sain.bo.impl.AsistenciaBoImpl">
+            <property name="asistenciaDao" ref="asistenciaDao" />
+        </bean>
+        <bean id="matriculaBo" class="com.sain.bo.impl.MatriculaBoImpl">
+            <property name="matriculaDao" ref="matriculaDao" />
+        </bean>
+        <bean id="materiaBo" class="com.sain.bo.impl.MateriaBoImpl">
+            <property name="materiaDao" ref="materiaDao" />
+        </bean>
+        <bean id="quimestreBo" class="com.sain.bo.impl.QuimestreBoImpl">
+            <property name="quimestreDao" ref="quimestreDao" />
+        </bean>
+</beans>

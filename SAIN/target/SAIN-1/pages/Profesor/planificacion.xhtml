@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Planifiaci&oacute;n</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <link rel="shortcut icon" href="images/logo.png"/>
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+            body{background-color: white;}
+            
+            header{
+                width: 100%;
+                height: 13%;
+                background-color: #1c94c4;
+                color: white;
+            }
+            nav{
+                height: 100%;
+                width: 15%;
+                background-color: #eee;
+                float: left;
+            }
+            article{
+                width: 75%;
+                height: 100%;
+                float: left;
+            }
+            footer {
+                background: #363636;
+                width: 100%;
+                color: white;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+            }
+                footer h3 {
+                    font-size: 0.8em;
+                }
+
+            #title {
+                font-size: 1.5em;
+                width: 50%;
+                display: inline-block;
+            }
+            #info{
+                width: 48%;
+                font-size: 0.9em;
+                display: inline-block;
+                text-align: right;
+                text-decoration: none;
+                color: white;
+            }
+             #tinfo{
+                color:white;
+            }
+            #tinfo:hover{
+                text-decoration:underline;
+            }
+            #selectcurso{
+                width: 100%;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <div id="title">
+            <h2>Bienvenido a SAIN</h2>
+            </div>
+            <div id="info">
+                <h:outputLabel  value="#{request.remoteUser}"/>
+                <p:link id="tinfo" href="https://grupof:8443/cas/logout" value=",Cerrar Sesion"/>
+            </div>
+        </header>
+        <nav>
+            <h:form>
+                <p:growl autoUpdate="true"/>
+                <p:panelMenu style="width:max-content">
+                    <p:submenu label="Inicio" >
+                        <p:menuitem value="Perfil" action="index.xhtml" icon="ui-icon-home" />
+                    </p:submenu>
+                    <p:separator />
+                    <p:submenu label="Planificaci&oacute;n" >
+                        <p:menuitem value="Crear" action="planificacion.xhtml" icon="ui-icon-document" />
+                        <p:menuitem value="Modificar" action="planificacion.xhtml"  icon="ui-icon-arrowrefresh-1-w" /> 
+                    </p:submenu>
+                    <p:submenu label="Calificaciones" >
+                        <p:menuitem value="Ingresar" action="inotas.xhtml" icon="ui-icon-document" />
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>
+        </nav>
+        <article>
+            <section>
+                <h:form id="selectcurso">
+                    <p:growl id="msgs" showDetail="true" />
+                    <p:panel header="Seleccione el Curso" style="margin-bottom:10px;">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="materia" value="Materia: " />
+                            <p:selectOneMenu id="materia" value="#{dropdownView.materia}" style="width:150px">
+                                <p:ajax listener="#{dropdownView.onMateriaChange}" update="curso" />
+                                <f:selectItem itemLabel="Escoja Materia" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{dropdownView.materias}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="curso" value="Curso: " />
+                            <p:selectOneMenu id="curso" value="#{dropdownView.curso}" style="width:150px">
+                                <f:selectItem itemLabel="Escoja Curso" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{dropdownView.cursos}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+
+                        <p:separator />
+
+                        <p:commandButton value="Cargar" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
+                    </p:panel>
+                </h:form>
+                <h:form>
+                    <h:outputLabel value="PLAN DE ESTUDIO" style="margin-left: 20%"/>
+                    <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                        <h:outputLabel for="quimestre1" value="Quimestre 1" /><br/>
+                        <p:inplace id="ajax1" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <p:inplace id="ajax2" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <p:inplace id="ajax3" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <h:outputLabel for="quimestre2" value="Quimestre 2" /><br/>
+                        <p:inplace id="ajax4" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <p:inplace id="ajax5" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <p:inplace id="ajax6" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <h:outputLabel for="quimestre3" value="Quimestre 3" /><br/>
+                        <p:inplace id="ajax7" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <p:inplace id="ajax8" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace><br/>
+                        <p:inplace id="ajax9" editor="true" style="margin-left: 20px">
+                            <p:inputText value="#{inplaceView.text}" required="true" label="text" />
+                        </p:inplace>
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton type="" value="Guardar" icon="ui-icon-disk" style="margin-left: 20%; font-size: 12pt"/>
+                    <p:commandButton type="" value="Cancelar" icon="ui-icon-close" style="margin-left: 5%; font-size: 12pt"/>
+                </h:form>
+            </section>
+        </article>
+        <footer>
+            <h3>SAIN. Sistema Academico Institucional&copy;</h3>
+        </footer>
+
+        <h:outputScript name="js/jquery-1.10.2.js" />
+        <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/primeui-1.0-min.js" />
+
+    </h:body>
+</html>
+

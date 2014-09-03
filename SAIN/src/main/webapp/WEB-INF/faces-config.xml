@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+    <application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    </application>
+    <managed-bean>
+        <managed-bean-name>estudianteBean</managed-bean-name>
+        <managed-bean-class>com.sain.manageBeans.EstudianteBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>estudianteBo</property-name>
+            <value>#{estudianteBo}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>empleadoBean</managed-bean-name>
+        <managed-bean-class>com.sain.manageBeans.EmpleadoBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>empleadoBo</property-name>
+            <value>#{empleadoBo}</value>
+        </managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>inspectorBean</managed-bean-name>
+        <managed-bean-class>com.sain.manageBeans.InspectorBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>cursoBo</property-name>
+            <value>#{cursoBo}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>estudianteBo</property-name>
+            <value>#{estudianteBo}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>asistenciaBo</property-name>
+            <value>#{asistenciaBo}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>matriculaBo</property-name>
+            <value>#{matriculaBo}</value>
+        </managed-property>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>profesorBean</managed-bean-name>
+        <managed-bean-class>com.sain.manageBeans.ProfesorBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>cursoBo</property-name>
+            <value>#{cursoBo}</value>
+        </managed-property>
+        
+        <managed-property>
+            <property-name>materiaBo</property-name>
+            <value>#{materiaBo}</value>
+        </managed-property>
+        
+        <managed-property>
+            <property-name>quimestreBo</property-name>
+            <value>#{quimestreBo}</value>
+        </managed-property>
+        
+        <managed-property>
+            <property-name>estudianteBo</property-name>
+            <value>#{estudianteBo}</value>
+        </managed-property>
+        
+    </managed-bean>
+    
+    <!--
+      - Navigation Rules
+      - Profesor
+      -->
+    <!--Profesor: Inicio -> Planificación || Ingreso de Notas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Profesor/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>planificacion</from-outcome> 
+            <to-view-id>planificacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>notas</from-outcome> 
+            <to-view-id>inotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Profesor: Planifiación -> Inicio || Ingreso de Notas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Profesor/planificacion.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>notas</from-outcome> 
+            <to-view-id>inotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Profesor: Ingreso de Notas -> Inicio || Planifiación-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Profesor/inotas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>planificacion</from-outcome> 
+            <to-view-id>planificacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--
+      - Navigation Rules
+      - Rector/Vicerrector
+      -->
+    <!--Rector/Vicerrector: Inicio -> Consulta Notas || Consulta Asistencia || Info. General || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Consulta Notas -> Inicio || Consulta Asistencia || Info. General || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/cnotas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Consulta Asistencia -> Inicio || Consulta Notas || Info. General || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/casistencia.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Info. General -> Inicio || Consulta Asistencia || Consulta Notas || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/info.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Aprobación -> Inicio || Consulta Notas || Info. General || Consulta Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/aprobacion.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--
+      - Navigation Rules
+      - Secretario
+      -->
+    <!--Secretario: Inicio -> Reporte Notas || Reporte Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Secretario/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>rnotas</from-outcome> 
+            <to-view-id>rnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rasistencia</from-outcome> 
+            <to-view-id>rasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Secretario: Reporte Notas -> Inicio || Reporte Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/rnotas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rasistencia</from-outcome> 
+            <to-view-id>rasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Secretario: Reporte Asistencia -> Inicio || Reporte Notas -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/rasistencia.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rnotas</from-outcome> 
+            <to-view-id>rnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--
+      - Navigation Rules
+      - Inspector
+      -->
+    <!--Inspector: Inicio -> Reportes de Conducta || Registro Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Inspector/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>rconducta</from-outcome> 
+            <to-view-id>rconducta.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>iasistencia</from-outcome> 
+            <to-view-id>iasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Inspector: Reportes de Conducta -> Inicio || Registro Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Inspector/rconducta.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>iasistencia</from-outcome> 
+            <to-view-id>iasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Inspector: Registro Asistencia -> Reportes de Conducta ||  Inicio-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Inspector/iasistencia.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rconducta</from-outcome> 
+            <to-view-id>rconducta.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    <managed-bean>
+        <managed-bean-name>customerBean</managed-bean-name>
+        <managed-bean-class>com.test.manageBeans.CustomerBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>customerBo</property-name>
+            <value>#{customerBo}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>

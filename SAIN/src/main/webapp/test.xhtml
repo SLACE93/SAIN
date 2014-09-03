@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Welcome to Java Beat  for seeing PrimeFaces_Spring_Hibernate_Project</title></h:head>
+<h:body>
+    <h:form>
+        <table>
+           <tr>
+                <td><h:outputLabel for="nombre" value="Nombre : " /></td>
+                <td><p:inputText id="nombre" value="#{estudianteBean.nombre}">
+                    <f:converter converterId="javax.faces.Integer"/>
+                    <p:ajax event="blur" update="Msg1" />
+                </p:inputText>
+                    <p:message id="Msg1" for="nombre" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="apellido" value="Apellido: " /></td>
+                <td><p:inputText id="apellido" value="#{estudianteBean.apellido}">
+                    <f:converter converterId="javax.faces.Integer"/>
+                    <p:ajax event="blur" update="Msg2" />
+                </p:inputText>
+                    <p:message id="Msg2" for="apellido" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="direccion" value="Direccion : " /></td>
+                <td><p:inputText id="direccion" value="#{estudianteBean.direccion}">
+                    <f:validateLength minimum="5" />
+                    <p:ajax event="blur" update="Msg3" />
+                </p:inputText>
+                    <p:message id="Msg3" for="direccion" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="repre" value="Representante : " /></td>
+                <td><p:inputText id="repre" value="#{estudianteBean.representante}">
+                    <f:validateLength minimum="5" />
+                    <p:ajax event="blur" update="Msg4" />
+                </p:inputText>
+                    <p:message id="Msg4" for="repre" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="telef" value="Telefono : " /></td>
+                <td><p:inputText id="telef" value="#{estudianteBean.telefono}">
+                    <f:validateLength minimum="5" />
+                    <p:ajax event="blur" update="Msg5" />
+                </p:inputText>
+                    <p:message id="Msg5" for="telef" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><p:commandButton id="addUser" value="Add" action="#{estudianteBean.save()}" ajax="false"/></td>
+            </tr>
+        </table>
+    </h:form>
+</h:body>
+</html> 

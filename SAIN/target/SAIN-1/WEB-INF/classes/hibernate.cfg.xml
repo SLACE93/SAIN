@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/sain</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">admin</property>
+    <mapping resource="com/sain/modelo/Citacion.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Planificacion.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Materia.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Modulo.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Asistencia.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Rol.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Evidencia.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Unidad.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Curso.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Empleado.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Quimestre.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Parcial.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Matricula.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Estudiante.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Parametro.hbm.xml"/>
+    <mapping resource="com/sain/modelo/Rolempleado.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/08/2014 04:31:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.sain.modelo.Planificacion" table="planificacion" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="200" not-null="true" />
+        </property>
+        <set name="modulos" table="modulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idplanificacion" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Modulo" />
+        </set>
+        <set name="materias" table="materia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idplanificacion" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Materia" />
+        </set>
+    </class>
+</hibernate-mapping>

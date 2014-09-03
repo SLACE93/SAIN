@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/08/2014 04:31:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.sain.modelo.Citacion" table="citacion" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="evidencia" class="com.sain.modelo.Evidencia" fetch="select">
+            <column name="idevidencia" not-null="true" />
+        </many-to-one>
+        <many-to-one name="curso" class="com.sain.modelo.Curso" fetch="select">
+            <column name="idcurso" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empleado" class="com.sain.modelo.Empleado" fetch="select">
+            <column name="idinspector" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="com.sain.modelo.Estudiante" fetch="select">
+            <column name="idestudiante" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

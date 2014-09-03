@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/08/2014 04:31:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.sain.modelo.Curso" table="curso" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="anioegb" type="string">
+            <column name="anioegb" length="20" not-null="true" />
+        </property>
+        <property name="paralelo" type="string">
+            <column name="paralelo" length="20" not-null="true" />
+        </property>
+        <property name="periodo" type="string">
+            <column name="periodo" length="20" not-null="true" />
+        </property>
+        <property name="jornada" type="string">
+            <column name="jornada" length="20" not-null="true" />
+        </property>
+        <set name="matriculas" table="matricula" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcurso" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Matricula" />
+        </set>
+        <set name="materias" table="materia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcurso" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Materia" />
+        </set>
+        <set name="asistencias" table="asistencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcurso" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Asistencia" />
+        </set>
+        <set name="citacions" table="citacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcurso" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Citacion" />
+        </set>
+    </class>
+</hibernate-mapping>

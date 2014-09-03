@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:sec="http://www.springframework.org/security/tags"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>SAIN 0.1</title>
+        <link rel="shortcut icon" href="/faces/resources/Images/logo.png"/>
+    </h:head>
+    <h:body>
+        LOGIN
+        <br/>
+        <h:link outcome="Profesor/index" value="Profesor" target="_blank" />
+        <br/><br/>
+        <h:link outcome="Inspector/index" value="Inspector" target="_blank" />
+        <br/><br/>
+        <h:link outcome="Secretario/index" value="Secretario" target="_blank" />
+        <br/><br/>
+        <sec:authorize access="hasAnyRole('ROLE_RECTOR','ROLE_SECRETARIO')">
+            <h:link outcome="Rector/index" value="Rector/Vicerrector" target="_blank" />
+        </sec:authorize>
+    </h:body>
+</html>
+

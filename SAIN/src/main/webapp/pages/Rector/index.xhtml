@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SAIN 0.1</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <link rel="shortcut icon" href="images/logo.png"/>
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+            body{background-color: white;}
+            
+            header{
+                width: 100%;
+                height: 13%;
+                background-color: #1c94c4;
+                color: white;
+            }
+            nav{
+                height: 100%;
+                width: 15%;
+                background-color: #eee;
+                float: left;
+            }
+            article{
+                width: 75%;
+                height: 100%;
+                float: left;
+            }
+            footer {
+                background: #363636;
+                width: 100%;
+                color: white;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+            }
+                footer h3 {
+                    font-size: 0.8em;
+                }
+
+            #title {
+                font-size: 1.5em;
+                width: 50%;
+                display: inline-block;
+            }
+            #info{
+                width: 48%;
+                font-size: 0.9em;
+                display: inline-block;
+                text-align: right;
+                text-decoration: none;
+                color: white;
+            }
+            #tinfo{
+                color:white;
+            }
+            #tinfo:hover{
+                text-decoration:underline;
+            }
+            #cartilla{
+                margin: 25px 25px 25px 25px;
+                font-size: 1.2em;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <div id="title">
+                <h2>Bienvenido a SAIN</h2>
+            </div>
+            <div id="info">
+                <h:outputLabel  value="#{request.remoteUser}"/>
+                <p:link id="tinfo" href="https://grupof:8443/cas/logout" value=",Cerrar Sesion"/>
+            </div>
+        </header>
+        <nav>
+            <h:form>
+                <p:growl autoUpdate="true"/>
+                <p:panelMenu style="width: max-content">
+                    <p:submenu label="Inicio" >
+                        <p:menuitem value="Perfil" action="index.xhtml" icon="ui-icon-home" />
+                        <p:menuitem value="Info. General" action="info.xhtml" icon="ui-icon-document" />
+                    </p:submenu>
+                    <p:separator />
+                    <p:submenu label="Asistencia" >
+                        <p:menuitem value="Consultar" action="casistencia.xhtml" icon="ui-icon-document" />
+                    </p:submenu>
+                    <p:submenu label="Calificaciones" >
+                        <p:menuitem value="Consultar" action="cnotas.xhtml" icon="ui-icon-document" />
+                    </p:submenu>
+                    <p:submenu label="Planificaci&oacute;n" >
+                        <p:menuitem value="Aprobaci&oacute;n" action="aprobacion.xhtml" icon="ui-icon-check" />
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>
+        </nav>
+        <article>
+            <section>
+                <div>
+                    <p:panelGrid columns="2" id="cartilla">
+                        <f:facet name="header">
+                            <p:graphicImage name="images/logo.png" width="200px" height="200px"/>
+                        </f:facet>
+
+                        <h:outputText value="Nombres:" />
+                        <h:outputText value="#{request.remoteUser}" />
+
+                        <h:outputText value="Identifiaci&oacute;n:" />
+                        <h:outputText value="0931191118" />
+
+                        <h:outputText value="Cargo:" />
+                        <h:outputText value="Rector" />
+
+                        <h:outputText value="Fecha de Nacimiento:" />
+                        <h:outputText value="06/02/1993" />
+                    </p:panelGrid>
+               </div>
+            </section>
+        </article>
+        <footer>
+            <h3>SAIN. Sistema Academico Institucional&copy;</h3>
+        </footer>
+
+    </h:body>
+</html>
+

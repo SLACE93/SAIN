@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/08/2014 04:31:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.sain.modelo.Evidencia" table="evidencia" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="parametro" class="com.sain.modelo.Parametro" fetch="select">
+            <column name="idparametro" not-null="true" />
+        </many-to-one>
+        <property name="tipocitacion" type="string">
+            <column name="tipocitacion" length="20" not-null="true" />
+        </property>
+        <property name="rutarelativa" type="string">
+            <column name="rutarelativa" length="80" />
+        </property>
+        <set name="citacions" table="citacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idevidencia" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Citacion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/08/2014 04:31:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.sain.modelo.Empleado" table="empleado" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="usuario" type="string">
+            <column name="usuario" length="20" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="50" not-null="true" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+        <set name="materias" table="materia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempleado" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Materia" />
+        </set>
+        <set name="citacions" table="citacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idinspector" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Citacion" />
+        </set>
+        <set name="rolempleados" table="rolempleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idempleado" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Rolempleado" />
+        </set>
+    </class>
+</hibernate-mapping>

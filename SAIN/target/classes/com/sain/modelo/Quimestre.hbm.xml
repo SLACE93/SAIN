@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/08/2014 04:31:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.sain.modelo.Quimestre" table="quimestre" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="matricula" class="com.sain.modelo.Matricula" fetch="select">
+            <column name="idmatricula" not-null="true" />
+        </many-to-one>
+        <many-to-one name="materia" class="com.sain.modelo.Materia" fetch="select">
+            <column name="idmateria" not-null="true" />
+        </many-to-one>
+        <property name="numero" type="java.lang.Integer">
+            <column name="numero" />
+        </property>
+        <property name="examen" type="java.lang.Float">
+            <column name="examen" precision="8" scale="8" />
+        </property>
+        <set name="parcials" table="parcial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idquimestre" not-null="true" />
+            </key>
+            <one-to-many class="com.sain.modelo.Parcial" />
+        </set>
+    </class>
+</hibernate-mapping>

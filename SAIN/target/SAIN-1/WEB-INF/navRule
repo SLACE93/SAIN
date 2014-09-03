@@ -1,0 +1,267 @@
+<!--
+      - Navigation Rules
+      - Profesor
+      -->
+    <!--Profesor: Inicio -> Planificación || Ingreso de Notas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Profesor/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>planificacion</from-outcome> 
+            <to-view-id>planificacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>notas</from-outcome> 
+            <to-view-id>inotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Profesor: Planifiación -> Inicio || Ingreso de Notas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Profesor/planificacion.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>notas</from-outcome> 
+            <to-view-id>inotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Profesor: Ingreso de Notas -> Inicio || Planifiación-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Profesor/inotas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>planificacion</from-outcome> 
+            <to-view-id>planificacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--
+      - Navigation Rules
+      - Rector/Vicerrector
+      -->
+    <!--Rector/Vicerrector: Inicio -> Consulta Notas || Consulta Asistencia || Info. General || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Consulta Notas -> Inicio || Consulta Asistencia || Info. General || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/cnotas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Consulta Asistencia -> Inicio || Consulta Notas || Info. General || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/casistencia.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Info. General -> Inicio || Consulta Asistencia || Consulta Notas || Aprobación -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/info.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>aprobacion</from-outcome> 
+            <to-view-id>aprobacion.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Rector/Vicerrector: Aprobación -> Inicio || Consulta Notas || Info. General || Consulta Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Rector/aprobacion.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cnotas</from-outcome> 
+            <to-view-id>cnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>casistencia</from-outcome> 
+            <to-view-id>casistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>info</from-outcome> 
+            <to-view-id>info.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--
+      - Navigation Rules
+      - Secretario
+      -->
+    <!--Secretario: Inicio -> Reporte Notas || Reporte Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Secretario/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>rnotas</from-outcome> 
+            <to-view-id>rnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rasistencia</from-outcome> 
+            <to-view-id>rasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Secretario: Reporte Notas -> Inicio || Reporte Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/rnotas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rasistencia</from-outcome> 
+            <to-view-id>rasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Secretario: Reporte Asistencia -> Inicio || Reporte Notas -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/rasistencia.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rnotas</from-outcome> 
+            <to-view-id>rnotas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--
+      - Navigation Rules
+      - Inspector
+      -->
+    <!--Inspector: Inicio -> Reportes de Conducta || Registro Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Inspector/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>rconducta</from-outcome> 
+            <to-view-id>rconducta.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>iasistencia</from-outcome> 
+            <to-view-id>iasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Inspector: Reportes de Conducta -> Inicio || Registro Asistencia -->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Inspector/rconducta.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>iasistencia</from-outcome> 
+            <to-view-id>iasistencia.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Inspector: Registro Asistencia -> Reportes de Conducta ||  Inicio-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/Inspector/iasistencia.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>rconducta</from-outcome> 
+            <to-view-id>rconducta.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
